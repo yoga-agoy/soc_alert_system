@@ -1,0 +1,135 @@
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --background-light: #f4f7f6;
+  /* Slight gray/blue tint for distinct background */
+  --surface-light: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent-color: #0d6efd;
+  --border-color: #e0e0e0;
+  --navbar-bg: #1a1a1a;
+  /* Dark navbar for contrast against light page */
+  --navbar-text: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-light);
+  /* Differentiates from white cards */
+  color: var(--text-primary);
+}
+
+/* Navbar specific overrides */
+nav.navbar {
+  background-color: var(--navbar-bg) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-dark .navbar-brand {
+  color: var(--navbar-text) !important;
+  font-weight: 700;
+}
+
+.navbar-dark .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar-dark .nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* Card Styling - Make them pop against the background */
+.card {
+  background-color: var(--surface-light);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* Softer, spread out shadow */
+  border-radius: 8px;
+  /* Modern rounded corners */
+}
+
+.card-header {
+  background-color: transparent;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+}
+
+/* Table Styling */
+.table {
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+  /* Light gray header */
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-hover>tbody>tr:hover>* {
+  background-color: rgba(13, 110, 253, 0.05);
+  /* Subtle primary tint on hover */
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(13, 110, 253, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Text Overrides */
+.text-light {
+  color: var(--text-primary) !important;
+}
+
+.text-white-50 {
+  color: #6c757d !important;
+}
+
+/* Revert bg-dark to be white/light for cards in light mode, or distinct dark if needed for contrast elements */
+.bg-dark {
+  background-color: #ffffff !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color);
+}
+
+/* Specific Badge Tweaks */
+.badge {
+  font-weight: 500;
+  padding: 0.5em 0.8em;
+}

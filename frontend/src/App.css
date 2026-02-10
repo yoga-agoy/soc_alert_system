@@ -1,0 +1,31 @@
+/* App.css - Specific Component Styles */
+
+.dashboard-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1rem;
+}
+
+.alert-card {
+    transition: transform 0.2s;
+}
+.alert-card:hover {
+    transform: translateY(-2px);
+}
+
+.ioc-badge {
+    font-size: 0.9em;
+    padding: 0.5em 0.8em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
