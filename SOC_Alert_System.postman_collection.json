@@ -1,0 +1,113 @@
+{
+    "info": {
+        "_postman_id": "b9f9e5c4-1234-5678-9abc-def012345678",
+        "name": "SOC Alert System",
+        "description": "API collection for SOC Alert System Backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get All Alerts",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/alerts",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "alerts"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Alert Details",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/alerts/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "alerts",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create Alert",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"alertId\": \"ALERT-NEW-001\",\n    \"source\": \"SIEM\",\n    \"eventType\": \"Brute Force Attempt\",\n    \"severity\": \"High\",\n    \"status\": \"New\",\n    \"description\": \"Multiple failed login attempts detected from single IP.\",\n    \"recommendedAction\": \"Block IP and reset user password.\",\n    \"timestamp\": \"2023-10-27T10:00:00\",\n    \"host\": {\n        \"hostname\": \"WEB-SRV-01\",\n        \"ipAddress\": \"192.168.1.50\",\n        \"os\": \"Linux\"\n    },\n    \"user\": {\n        \"username\": \"admin\",\n        \"domain\": \"CORP\"\n    },\n    \"network\": {\n        \"destinationIp\": \"192.168.1.50\",\n        \"destinationPort\": 22,\n        \"protocol\": \"SSH\"\n    },\n    \"ioc\": {\n        \"ip\": \"203.0.113.45\"\n    }\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/alerts",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "alerts"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Add Investigation",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"action\": \"True Positive\",\n    \"notes\": \"Confirmed malicious activity. IP blocked at firewall.\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/alerts/1/investigate",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "alerts",
+                        "1",
+                        "investigate"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
