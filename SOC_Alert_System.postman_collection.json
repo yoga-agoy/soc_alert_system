@@ -1,11 +1,39 @@
 {
     "info": {
-        "_postman_id": "b9f9e5c4-1234-5678-9abc-def012345678",
-        "name": "SOC Alert System",
-        "description": "API collection for SOC Alert System Backend",
+        "_postman_id": "soc-alert-api-collection",
+        "name": "SOC Alert System API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
+        {
+            "name": "Create Alert (Rich Data)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"alertId\": \"SOC-ALT-2026-000146\",\n    \"source\": \"EDR\",\n    \"eventType\": \"Suspicious Outbound Connection\",\n    \"severity\": \"High\",\n    \"status\": \"New\",\n    \"timestamp\": \"2026-02-09T12:45:22Z\",\n    \"description\": \"Endpoint detected suspicious executable making outbound HTTPS connection to known TOR exit node range.\",\n    \"recommendedAction\": \"Investigate host, isolate if needed.\",\n    \"host\": {\n        \"hostname\": \"FINANCE-LAP-22\",\n        \"ipAddress\": \"10.10.45.23\",\n        \"os\": \"Windows 11\"\n    },\n    \"user\": {\n        \"username\": \"finance.user\",\n        \"domain\": \"corp.local\"\n    },\n    \"network\": {\n        \"destinationIp\": \"185.220.101.45\",\n        \"destinationPort\": 443,\n        \"protocol\": \"HTTPS\",\n        \"url\": \"https://secure-update-checker.com/login\"\n    },\n    \"file\": {\n        \"fileName\": \"invoice_update.exe\",\n        \"fileHashSha256\": \"a3f5c2b91d0d9c7b1f4e45c6f2e9c1d0e8a9b7c6d5e4f3a2b1c9d8e7f6a5b4c3\"\n    },\n    \"ioc\": {\n        \"IP\": \"185.220.101.45\",\n        \"DOMAIN\": \"secure-update-checker.com\",\n        \"URL\": \"https://secure-update-checker.com/login\",\n        \"FILE_HASH\": \"a3f5c2b91d0d9c7b1f4e45c6f2e9c1d0e8a9b7c6d5e4f3a2b1c9d8e7f6a5b4c3\"\n    }\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/alerts",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "alerts"
+                    ]
+                }
+            },
+            "response": []
+        },
         {
             "name": "Get All Alerts",
             "request": {
@@ -48,49 +76,18 @@
             "response": []
         },
         {
-            "name": "Create Alert",
+            "name": "Update Investigation",
             "request": {
                 "method": "POST",
                 "header": [
                     {
                         "key": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
+                        "value": "application/json"
                     }
                 ],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"alertId\": \"ALERT-NEW-001\",\n    \"source\": \"SIEM\",\n    \"eventType\": \"Brute Force Attempt\",\n    \"severity\": \"High\",\n    \"status\": \"New\",\n    \"description\": \"Multiple failed login attempts detected from single IP.\",\n    \"recommendedAction\": \"Block IP and reset user password.\",\n    \"timestamp\": \"2023-10-27T10:00:00\",\n    \"host\": {\n        \"hostname\": \"WEB-SRV-01\",\n        \"ipAddress\": \"192.168.1.50\",\n        \"os\": \"Linux\"\n    },\n    \"user\": {\n        \"username\": \"admin\",\n        \"domain\": \"CORP\"\n    },\n    \"network\": {\n        \"destinationIp\": \"192.168.1.50\",\n        \"destinationPort\": 22,\n        \"protocol\": \"SSH\"\n    },\n    \"ioc\": {\n        \"ip\": \"203.0.113.45\"\n    }\n}"
-                },
-                "url": {
-                    "raw": "http://localhost:8080/api/alerts",
-                    "protocol": "http",
-                    "host": [
-                        "localhost"
-                    ],
-                    "port": "8080",
-                    "path": [
-                        "api",
-                        "alerts"
-                    ]
-                }
-            },
-            "response": []
-        },
-        {
-            "name": "Add Investigation",
-            "request": {
-                "method": "POST",
-                "header": [
-                    {
-                        "key": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                    }
-                ],
-                "body": {
-                    "mode": "raw",
-                    "raw": "{\n    \"action\": \"True Positive\",\n    \"notes\": \"Confirmed malicious activity. IP blocked at firewall.\"\n}"
+                    "raw": "{\n    \"action\": \"TP\",\n    \"notes\": \"Confirmed malicious based on threat intel.\"\n}"
                 },
                 "url": {
                     "raw": "http://localhost:8080/api/alerts/1/investigate",
